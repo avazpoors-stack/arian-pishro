@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>آریان پیشرو | ARIAN PISHRO — فروشگاه تخصصی کامپیوتر و گیمینگ</title>
 <meta name="description" content="آریان پیشرو — فروشگاه تخصصی سیستم گیمینگ، لپ‌تاپ، قطعات و لوازم جانبی. اسمبل حرفه‌ای، گارانتی معتبر، ارسال سراسری.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,11 +58,14 @@
     </nav>
 
     <div class="header__actions">
-      <label class="search" aria-label="جستجو">
+      <label class="search search--desktop" aria-label="جستجو">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="searchInput" type="search" placeholder="جستجو: RTX 5080، لپ‌تاپ ایسوس..." autocomplete="off">
+        <input id="searchInput" type="search" placeholder="جستجو: RTX 5080، لپ‌تاپ ایسوس..." autocomplete="off" inputmode="search" enterkeyhint="search">
         <kbd>⌘ K</kbd>
       </label>
+      <button class="icon-btn search-btn" id="searchToggle" aria-label="جستجو" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
       <button class="icon-btn theme-btn" id="themeToggle" aria-label="تغییر تم" title="تغییر تم (روشن / تیره)">
         <svg class="theme-icon theme-icon--light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M19.07 4.93l-1.41 1.41M6.34 17.66l-1.41 1.41"/></svg>
         <svg class="theme-icon theme-icon--dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
@@ -71,14 +74,25 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-13z"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/><path d="M6 6L5 2H2"/></svg>
         <span class="badge" id="cartCount">0</span>
       </button>
-      <button class="burger" id="burger" aria-label="منو">
+      <button class="burger" id="burger" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 
+  <!-- Mobile search (Stockland-style sticky bar) -->
+  <div class="mobile-search" id="mobileSearch" aria-hidden="true">
+    <div class="container">
+      <label class="search search--mobile" aria-label="جستجو در موبایل">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="searchInputMobile" type="search" placeholder="جستجو: RTX 5080، لپ‌تاپ ایسوس..." autocomplete="off" inputmode="search" enterkeyhint="search">
+        <button class="search__clear" id="searchClear" aria-label="پاک کردن">✕</button>
+      </label>
+    </div>
+  </div>
+
   <!-- Mobile nav -->
-  <div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="#systems">سیستم‌های آماده</a>
     <a href="#shop">فروشگاه قطعات</a>
     <a href="#builder">سیستم‌ساز حرفه‌ای</a>
