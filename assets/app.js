@@ -604,6 +604,21 @@ window.addEventListener('scroll', ()=>{
   $('#header').style.boxShadow = window.scrollY>10? '0 4px 20px rgba(0,0,0,.4)' : 'none';
 });
 
+// ========== Theme — white default, dark lighter than pure black ==========
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme){
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('ap_theme', theme);
+}
+if(themeToggle){
+  themeToggle.addEventListener('click', ()=>{
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    toast(next==='dark' ? 'حالت تیره فعال شد 🌙' : 'حالت روشن فعال شد ☀️', next==='dark' ? '' : 'success');
+  });
+}
+
 // ========== Init: respect reduced motion ==========
 if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
   document.documentElement.style.setProperty('--ease','linear');

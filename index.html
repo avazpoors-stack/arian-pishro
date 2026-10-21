@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script>
+// Early theme — white default, dark = lighter than pure black
+(function(){
+  const saved = localStorage.getItem('ap_theme');
+  const theme = saved || 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
 </head>
 <body>
 <!-- Top ticker — MAINGEAR pattern -->
@@ -49,6 +57,10 @@
         <input id="searchInput" type="search" placeholder="جستجو: RTX 5080، لپ‌تاپ ایسوس..." autocomplete="off">
         <kbd>⌘ K</kbd>
       </label>
+      <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+        <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+        <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+      </button>
       <button class="icon-btn" id="cartBtn" aria-label="سبد خرید">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-13z"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/><path d="M6 6L5 2H2"/></svg>
         <span class="badge" id="cartCount">0</span>
