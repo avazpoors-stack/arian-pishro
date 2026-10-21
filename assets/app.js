@@ -133,8 +133,57 @@ function animateStats(){
 }
 animateStats();
 
-// ========== Mobile nav ==========
-$('#burger').addEventListener('click', ()=> $('#mobileNav').classList.toggle('is-open'));
+// ========== Mobile nav — professional: a11y, backdrop, scroll lock ==========
+const burger = $('#burger');
+const mobileNav = $('#mobileNav');
+function toggleNav(force){
+  const isOpen = typeof force==='boolean' ? force : !mobileNav.classList.contains('is-open');
+  mobileNav.classList.toggle('is-open', isOpen);
+  mobileNav.setAttribute('aria-hidden', String(!isOpen));
+  burger.classList.toggle('is-open', isOpen);
+  burger.setAttribute('aria-expanded', String(isOpen));
+  burger.setAttribute('aria-label', isOpen ? 'بستن منو' : 'باز کردن منو');
+  document.body.classList.toggle('nav-open', isOpen);
+}
+burger?.addEventListener('click', ()=> toggleNav());
+$$('#mobileNav a').forEach(a=> a.addEventListener('click', ()=> toggleNav(false)));
+document.addEventListener('click', e=>{
+  if(mobileNav.classList.contains('is-open') && !mobileNav.contains(e.target) && !burger.contains(e.target)){
+    toggleNav(false);
+  }
+});
+
+// ========== Mobile search — Stockland-style ==========
+const searchToggle = $('#searchToggle');
+const mobileSearch = $('#mobileSearch');
+const searchInput = $('#searchInput');
+const searchInputMobile = $('#searchInputMobile');
+const searchClear = $('#searchClear');
+function setSearchOpen(open){
+  if(!mobileSearch || !searchToggle) return;
+  mobileSearch.classList.toggle('is-open', open);
+  mobileSearch.setAttribute('aria-hidden', String(!open));
+  searchToggle.setAttribute('aria-expanded', String(open));
+  document.body.classList.toggle('search-open', open);
+  if(open) setTimeout(()=> searchInputMobile?.focus(), 100);
+}
+searchToggle?.addEventListener('click', ()=> setSearchOpen(!mobileSearch.classList.contains('is-open')));
+searchClear?.addEventListener('click', ()=>{
+  if(searchInputMobile) searchInputMobile.value='';
+  if(searchInput) searchInput.value='';
+  searchQuery='';
+  visibleCount=6;
+  renderProducts();
+  setSearchOpen(false);
+});
+// Sync desktop ↔ mobile inputs (same filter)
+function syncSearch(val){
+  searchQuery = val.trim();
+  if(searchInput) searchInput.value = val;
+  if(searchInputMobile) searchInputMobile.value = val;
+  visibleCount=6;
+  renderProducts();
+}
 
 // ========== Render Featured Rail ==========
 function renderRail(){
@@ -283,11 +332,21 @@ $('#loadMoreBtn').addEventListener('click', ()=>{
   renderProducts();
   toast('۳ محصول دیگر نمایش داده شد');
 });
-$('#searchInput').addEventListener('input', e=>{
-  searchQuery=e.target.value.trim();
-  visibleCount=6;
-  renderProducts();
+function handleSearchInput(val){
+  syncSearch(val);
   document.querySelector('#shop').scrollIntoView({behavior:'smooth',block:'start'});
+}
+$('#searchInput').addEventListener('input', e=> handleSearchInput(e.target.value));
+$('#searchInputMobile')?.addEventListener('input', e=> handleSearchInput(e.target.value));
+$('#searchInput')?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); setSearchOpen(false); }});
+$('#searchInputMobile')?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); setSearchOpen(false); }});
+// Sync ESC to close mobile overlays
+const origEscHandler = document.onkeydown;
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    if(mobileSearch?.classList.contains('is-open')) setSearchOpen(false);
+    if(mobileNav?.classList.contains('is-open')) toggleNav(false);
+  }
 });
 
 // category tiles filter
@@ -368,6 +427,7 @@ function openModal(id){
   `;
   modal.classList.add('is-open');
   backdrop.classList.add('is-open');
+  document.body.classList.add('modal-open');
   document.body.style.overflow='hidden';
   // tabs
   $$('.tab').forEach(t=>{
@@ -392,12 +452,14 @@ function openModal(id){
 function closeModal(){
   modal.classList.remove('is-open');
   backdrop.classList.remove('is-open');
-  document.body.style.overflow='';
+  document.body.classList.remove('modal-open');
+  if(!document.body.classList.contains('drawer-open') && !document.body.classList.contains('nav-open')) document.body.style.overflow='';
 }
 $('#closeModal').addEventListener('click', closeModal);
 backdrop.addEventListener('click', closeModal);
 
-// ========== Cart ==========
+// ========== Cart — with body lock & focus ==========
+
 let cart = JSON.parse(localStorage.getItem('ap_cart')||'[]');
 
 function saveCart(){
@@ -453,10 +515,14 @@ window.removeItem=(id)=>{ cart=cart.filter(c=>c.id!==id); saveCart(); toast('ا�
 function openDrawer(){
   $('#cartDrawer').classList.add('is-open');
   $('#drawerBackdrop').classList.add('is-open');
+  document.body.classList.add('drawer-open');
+  document.body.style.overflow='hidden';
 }
 function closeDrawer(){
   $('#cartDrawer').classList.remove('is-open');
   $('#drawerBackdrop').classList.remove('is-open');
+  document.body.classList.remove('drawer-open');
+  if(!$('#productModal').classList.contains('is-open') && !mobileNav.classList.contains('is-open')) document.body.style.overflow='';
 }
 $('#cartBtn').addEventListener('click', openDrawer);
 $('#closeDrawer').addEventListener('click', closeDrawer);
