@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آریان پیشرو | ARIAN PISHRO — فروشگاه تخصصی کامپیوتر و گیمینگ</title>
+<meta name="description" content="آریان پیشرو — فروشگاه تخصصی سیستم گیمینگ، لپ‌تاپ، قطعات و لوازم جانبی. اسمبل حرفه‌ای، گارانتی معتبر، ارسال سراسری.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- Top ticker — MAINGEAR pattern -->
+<div class="ticker" role="region" aria-label="اطلاعیه">
+  <div class="ticker__track" id="tickerTrack">
+    <span>🚚 ارسال رایگان بالای ۵ میلیون تومان</span>
+    <span class="dot"></span>
+    <span>🛡️ ۱۲ ماه گارانتی + ۷ روز مهلت تست</span>
+    <span class="dot"></span>
+    <span>⚡ اسمبل رایگان توسط تکنسین — تست کامل قبل از ارسال</span>
+    <span class="dot"></span>
+    <span>💳 پرداخت اقساطی بدون ضامن — تا ۱۲ ماه</span>
+    <span class="dot"></span>
+    <span>📞 مشاوره رایگان: ۰۲۱-۸۸۰۰۰۰۰۰</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="logo" href="#" aria-label="آریان پیشرو">
+      <span class="logo__icon">◆</span>
+      <span class="logo__text">
+        <strong>آریان پیشرو</strong>
+        <small>ARIAN PISHRO</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="منوی اصلی">
+      <a href="#systems">سیستم‌ها</a>
+      <a href="#shop">فروشگاه</a>
+      <a href="#builder">سیستم‌ساز</a>
+      <a href="#reviews">نظرات</a>
+    </nav>
+
+    <div class="header__actions">
+      <label class="search" aria-label="جستجو">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="searchInput" type="search" placeholder="جستجو: RTX 5080، لپ‌تاپ ایسوس..." autocomplete="off">
+        <kbd>⌘ K</kbd>
+      </label>
+      <button class="icon-btn" id="cartBtn" aria-label="سبد خرید">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-13z"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/><path d="M6 6L5 2H2"/></svg>
+        <span class="badge" id="cartCount">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="منو">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#systems">سیستم‌های آماده</a>
+    <a href="#shop">فروشگاه قطعات</a>
+    <a href="#builder">سیستم‌ساز حرفه‌ای</a>
+    <a href="#reviews">رضایت مشتریان</a>
+    <div class="mobile-nav__contact">
+      <span>۰۲۱-۸۸۰۰۰۰۰۰</span>
+      <small>هر روز ۹ تا ۲۱</small>
+    </div>
+  </div>
+</header>
+
+<!-- Hero — Razer style -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="assets/images/hero-pc.jpg" alt="" loading="eager">
+    <div class="hero__glow"></div>
+  </div>
+  <div class="container hero__content">
+    <div class="hero__eyebrow">
+      <span class="live-dot"></span>
+      موجودی به‌روز — ارسال امروز تا ساعت ۱۵
+    </div>
+    <h1 class="hero__title">
+      <span>FOR GAMERS.</span>
+      <span class="accent">BY BUILDERS.</span>
+      <small>سیستم رویایی‌ات را بساز — نه فقط بخر</small>
+    </h1>
+    <p class="hero__desc">کیس‌های اسمبل‌شده حرفه‌ای با تست استرس ۴۸ ساعته، کابل‌کشی تمیز و گارانتی واقعی. از اقتصادی تا پرچمدار — هر بودجه‌ای یک هیولای گیمینگ دارد.</p>
+    <div class="hero__ctas">
+      <a href="#systems" class="btn btn--primary btn--shine" data-ripple>
+        <span>مشاهده سیستم‌ها</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#builder" class="btn btn--ghost" data-ripple>سیستم‌ساز تعاملی 🛠️</a>
+    </div>
+    <div class="hero__stats" id="heroStats">
+      <div><b data-count="2400">0</b><span>+ سیستم تحویل‌شده</span></div>
+      <div><b data-count="98">0</b><span>% رضایت مشتریان</span></div>
+      <div><b data-count="24">0</b><span>ساعت پشتیبانی</span></div>
+      <div><b>4.9<small>/5</small></b><span>امتیاز گوگل</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<div class="trust">
+  <div class="container trust__inner">
+    <div><i>🛡️</i><strong>گارانتی ۱۲ ماهه</strong><span>تعویض بی‌قید و شرط</span></div>
+    <div><i>🚚</i><strong>ارسال سراسری</strong><span>پست و تیپاکس فردایی</span></div>
+    <div><i>💳</i><strong>اقساط ۱۲ ماهه</strong><span>بدون ضامن و چک</span></div>
+    <div><i>🔧</i><strong>اسمبل حرفه‌ای</strong><span>تست کامل + کابل‌کشی</span></div>
+  </div>
+</div>
+
+<!-- Categories — MAINGEAR tiles + Stockland counts -->
+<section class="section" id="categories">
+  <div class="container">
+    <div class="section__head">
+      <h2>دسته‌بندی‌ها</h2>
+      <p>هر آنچه برای یک سیستم حرفه‌ای نیاز داری — با موجودی واقعی</p>
+    </div>
+    <div class="cats">
+      <a class="cat cat--large" href="#shop" data-cat="system">
+        <img src="assets/images/hero-pc.jpg" alt="">
+        <div class="cat__overlay"></div>
+        <div class="cat__info"><h3>کیس گیمینگ آماده</h3><span>۲۴ مدل • از ۱۸ میلیون</span></div>
+        <span class="cat__arrow">↗</span>
+      </a>
+      <a class="cat" href="#shop" data-cat="laptop">
+        <img src="assets/images/laptop.jpg" alt="">
+        <div class="cat__overlay"></div>
+        <div class="cat__info"><h3>لپ‌تاپ گیمینگ</h3><span>۱۸ مدل • از ۳۲ میلیون</span></div>
+      </a>
+      <a class="cat" href="#shop" data-cat="gpu">
+        <img src="assets/images/gpu.jpg" alt="">
+        <div class="cat__overlay"></div>
+        <div class="cat__info"><h3>کارت گرافیک</h3><span>۴۲ مدل • RTX 40/50</span></div>
+      </a>
+      <a class="cat cat--builder" href="#builder">
+        <div class="cat__builder-bg"></div>
+        <div class="cat__info"><h3>🛠️ سیستم‌ساز هوشمند</h3><span>قطعات را بچین، قیمت لحظه‌ای ببین</span></div>
+        <span class="cat__cta">شروع کن →</span>
+      </a>
+      <a class="cat" href="#shop" data-cat="peripheral">
+        <img src="assets/images/peripherals.jpg" alt="">
+        <div class="cat__overlay"></div>
+        <div class="cat__info"><h3>تجهیزات گیمینگ</h3><span>۱۲۰+ مدل • موس و کیبورد</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Systems — Closure: horizontal rail with peek -->
+<section class="section section--dark" id="systems">
+  <div class="container">
+    <div class="section__head section__head--row">
+      <div>
+        <h2>سیستم‌های ویژه <span class="pill">۳ پیکربندی برتر</span></h2>
+        <p>اسمبل‌شده، تست‌شده، آماده بازی — با مشخصات فنی شفاف مثل Stockland</p>
+      </div>
+      <div class="rail-controls">
+        <button class="rail-btn" id="railPrev" aria-label="قبلی">‹</button>
+        <button class="rail-btn" id="railNext" aria-label="بعدی">›</button>
+      </div>
+    </div>
+    <div class="rail" id="systemsRail">
+      <!-- JS will inject -->
+    </div>
+    <p class="hint">← اسکرول کن — کارت بعدی عمداً نیمه‌پیداست تا ادامه را ببینی (اصل Closure)</p>
+  </div>
+</section>
+
+<!-- Shop — Stockland full cards + Choice Overload control -->
+<section class="section" id="shop">
+  <div class="container">
+    <div class="section__head">
+      <h2>فروشگاه</h2>
+      <p>کارت‌های کامل با کد کالا، موجودی و مشخصات فنی روی کارت — بدون نیاز به کلیک</p>
+    </div>
+
+    <div class="shop-toolbar">
+      <div class="chips" id="filterChips">
+        <button class="chip is-active" data-filter="all">همه</button>
+        <button class="chip" data-filter="system">سیستم آماده</button>
+        <button class="chip" data-filter="laptop">لپ‌تاپ</button>
+        <button class="chip" data-filter="gpu">کارت گرافیک</button>
+        <button class="chip" data-filter="cpu">پردازنده</button>
+        <button class="chip" data-filter="peripheral">تجهیزات</button>
+        <button class="chip" data-filter="inStock">● فقط موجود</button>
+      </div>
+      <div class="toolbar-right">
+        <select id="sortSelect" class="select">
+          <option value="featured">پیشنهادی</option>
+          <option value="priceAsc">ارزان‌ترین</option>
+          <option value="priceDesc">گران‌ترین</option>
+          <option value="discount">بیشترین تخفیف</option>
+        </select>
+        <span class="count" id="resultCount"></span>
+      </div>
+    </div>
+
+    <div class="products" id="productsGrid"></div>
+    <div class="load-more">
+      <button class="btn btn--ghost" id="loadMoreBtn">نمایش ۳ محصول دیگر ↓</button>
+      <small id="loadMoreHint">۶ از ۹ نمایش داده شده — برای جلوگیری از Choice Overload</small>
+    </div>
+  </div>
+</section>
+
+<!-- Battlestation — Anti Banner-Blindness: content guide not ad -->
+<section class="guide">
+  <div class="container guide__inner">
+    <div class="guide__media">
+      <img src="assets/images/battlestation.jpg" alt="بتل‌استیشن">
+      <div class="guide__badge">راهنمای خرید • نه تبلیغ</div>
+    </div>
+    <div class="guide__content">
+      <span class="eyebrow">چطور بتل‌استیشن بچینیم؟</span>
+      <h2>از میز خالی تا اتاق گیم حرفه‌ای — قدم‌به‌قدم</h2>
+      <ul class="checklist">
+        <li><span class="check">✓</span><div><strong>قدم ۱: سیستم اصلی</strong><span>بودجه‌ات را بگو — ما بهترین ترکیب GPU/CPU را پیشنهاد می‌دهیم</span></div></li>
+        <li><span class="check">✓</span><div><strong>قدم ۲: مانیتور و میز</strong><span>کدام رزولوشن؟ 1080p برای FPS بالا یا 4K برای گرافیک؟</span></div></li>
+        <li><span class="check">✓</span><div><strong>قدم ۳: تجهیزات</strong><span>موس ۸K polling، کیبورد مکانیکال — تست‌شده توسط گیمرها</span></div></li>
+      </ul>
+      <div class="price-note">
+        <span>شروع از</span>
+        <b>۱۸٫۹۰۰٫۰۰۰ <small>تومان</small></b>
+        <span class="muted">• اقساط ۱۲ ماهه • گارانتی کتبی</span>
+      </div>
+      <a href="#builder" class="btn btn--primary" data-ripple>شروع سیستم‌سازی</a>
+    </div>
+  </div>
+</section>
+
+<!-- PC Builder — Connectedness + Progressive Disclosure + Miller -->
+<section class="section section--dark" id="builder">
+  <div class="container">
+    <div class="section__head">
+      <h2>🛠️ سیستم‌ساز آریان پیشرو <span class="pill pill--green">زنده و تعاملی</span></h2>
+      <p>قطعات را انتخاب کن — قیمت، توان مصرفی و پاور پیشنهادی لحظه‌ای محاسبه می‌شود</p>
+    </div>
+
+    <!-- Presets — Hick's Law: 3 options not 30 -->
+    <div class="presets">
+      <button class="preset" data-preset="eco">
+        <span class="preset__icon">🌱</span>
+        <strong>اقتصادی</strong>
+        <span>1080p گیمینگ</span>
+        <small>~ ۲۸ میلیون</small>
+      </button>
+      <button class="preset is-active" data-preset="pro">
+        <span class="preset__icon">⚡</span>
+        <strong>گیمینگ حرفه‌ای</strong>
+        <span>1440p / 240Hz</span>
+        <small>~ ۶۸ میلیون</small>
+      </button>
+      <button class="preset" data-preset="flagship">
+        <span class="preset__icon">👑</span>
+        <strong>پرچمدار</strong>
+        <span>4K بی‌رحم</span>
+        <small>~ ۱۴۵ میلیون</small>
+      </button>
+    </div>
+
+    <!-- Stepper — Connectedness -->
+    <div class="stepper" id="stepper">
+      <div class="step is-active" data-step="1"><i>1</i><span>کارت گرافیک</span></div>
+      <div class="step-line"></div>
+      <div class="step" data-step="2"><i>2</i><span>پردازنده</span></div>
+      <div class="step-line"></div>
+      <div class="step" data-step="3"><i>3</i><span>رم و حافظه</span></div>
+      <div class="step-line"></div>
+      <div class="step step--final" data-step="4"><i>✓</i><span>قیمت نهایی</span></div>
+    </div>
+
+    <div class="builder-grid">
+      <div class="builder-options" id="builderOptions"></div>
+      <div class="builder-summary" id="builderSummary"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews — Social proof -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section__head">
+      <h2>مشتریان چه می‌گویند</h2>
+      <p>نظر واقعی خریداران — با امتیاز و تاریخ خرید تأییدشده</p>
+    </div>
+    <div class="reviews">
+      <article class="review">
+        <div class="review__head"><b>امیرحسین ر.</b><span class="stars">★★★★★</span></div>
+        <p>«سیستم APEX FORCE رو گرفتم. کابل‌کشی تمیز، تست استرس انجام شده بود و جعبه قطعات هم کامل فرستادن. دمشون گرم.»</p>
+        <small>خرید APEX FORCE • ۲ روز پیش • تأییدشده ✓</small>
+      </article>
+      <article class="review">
+        <div class="review__head"><b>سارا م.</b><span class="stars">★★★★★</span></div>
+        <p>«لپ‌تاپ ROG با قیمت عالی و گارانتی معتبر. پشتیبانی تا نصب درایورها کمک کرد.»</p>
+        <small>خرید لپ‌تاپ ROG Strix • ۱ هفته پیش • تأییدشده ✓</small>
+      </article>
+      <article class="review">
+        <div class="review__head"><b>کیان پ.</b><span class="stars">★★★★☆</span></div>
+        <p>«سیستم‌ساز سایت فوق‌العاده‌ست. دقیق پاور پیشنهادی رو حساب کرد و از هزینه اضافی جلوگیری شد.»</p>
+        <small>استفاده از سیستم‌ساز • ۳ روز پیش</small>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter — Parkinson prefill -->
+<section class="newsletter">
+  <div class="container newsletter__inner">
+    <div>
+      <h3>از تخفیف‌ها جا نمونی؟</h3>
+      <p>حراج آخر هفته و موجودی‌های محدود — فقط ایمیل بزن، ما خبرت می‌کنیم</p>
+    </div>
+    <form class="newsletter__form" id="newsletterForm">
+      <input type="email" placeholder="ایمیل شما" required>
+      <input type="text" placeholder="نام (اختیاری)" id="nlName">
+      <button class="btn btn--primary" data-ripple>عضویت</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="logo">
+          <span class="logo__icon">◆</span>
+          <span class="logo__text"><strong>آریان پیشرو</strong><small>ARIAN PISHRO</small></span>
+        </div>
+        <p class="footer__desc">فروشگاه تخصصی سخت‌افزار و سیستم‌های گیمینگ. از ۱۴۰۱ کنار گیمرهای ایرانی — با اسمبل حرفه‌ای و خدمات پس از فروش واقعی.</p>
+        <div class="socials">
+          <a href="#" aria-label="اینستاگرام">◎</a>
+          <a href="#" aria-label="تلگرام">✈</a>
+          <a href="#" aria-label="یوتیوب">▶</a>
+        </div>
+      </div>
+      <div>
+        <h4>دسترسی سریع</h4>
+        <a href="#systems">سیستم‌های آماده</a>
+        <a href="#shop">کارت گرافیک</a>
+        <a href="#shop">لپ‌تاپ گیمینگ</a>
+        <a href="#builder">سیستم‌ساز</a>
+      </div>
+      <div>
+        <h4>خدمات</h4>
+        <a href="#">گارانتی و بازگشت</a>
+        <a href="#">ارسال و پرداخت</a>
+        <a href="#">مشاوره رایگان</a>
+        <a href="#">آموزش اسمبل</a>
+      </div>
+      <div>
+        <h4>تماس</h4>
+        <p>تهران، خیابان ولیعصر — پاساژ کامپیوتر<br>۰۲۱-۸۸۰۰۰۰۰۰<br>support@arianpishro.ir</p>
+        <div class="trust-badges">
+          <span>نماد اعتماد</span><span>سامان‌دهی</span><span>پرداخت امن</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© ۱۴۰۴ آریان پیشرو — همه حقوق محفوظ است</span>
+      <span>طراحی با الهام از Razer × MAINGEAR • توسعه فول‌استک</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart Drawer — Figure-Ground with blur -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="سبد خرید">
+  <div class="drawer__head">
+    <h3>سبد خرید <span id="drawerCount">0 کالا</span></h3>
+    <button class="icon-btn" id="closeDrawer">✕</button>
+  </div>
+  <div class="drawer__body" id="cartItems"></div>
+  <div class="drawer__foot">
+    <div class="drawer__total"><span>جمع کل</span><b id="cartTotal">۰ تومان</b></div>
+    <!-- Checkout flow — Connectedness: cart → info → pay -->
+    <div class="checkout-steps">
+      <span class="is-active">سبد</span><i>←</i><span>اطلاعات</span><i>←</i><span>پرداخت</span>
+    </div>
+    <form class="checkout-form" id="checkoutForm">
+      <input type="text" placeholder="نام و نام‌خانوادگی" id="coName" required>
+      <input type="tel" placeholder="شماره موبایل" required>
+      <div class="row">
+        <input type="text" placeholder="شهر" id="coCity">
+        <input type="text" placeholder="کد تخفیف">
+      </div>
+      <button type="submit" class="btn btn--primary btn--full" data-ripple>ثبت سفارش — پرداخت در محل</button>
+    </form>
+    <small class="muted">پارکینسون: نام و شهر شما ذخیره می‌شود و دفعه بعد خودکار پر می‌شود</small>
+  </div>
+</aside>
+
+<!-- Product Modal — Stockland detail -->
+<div class="modal-backdrop" id="modalBackdrop"></div>
+<div class="modal" id="productModal" role="dialog" aria-modal="true">
+  <button class="modal__close" id="closeModal">✕</button>
+  <div class="modal__inner" id="modalInner"></div>
+</div>
+
+<!-- Toast -->
+<div class="toasts" id="toasts"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
