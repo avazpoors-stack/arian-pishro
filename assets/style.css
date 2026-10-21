@@ -123,13 +123,14 @@ input,select{font:inherit}
 }
 .header__inner{display:flex;align-items:center;gap:20px;height:66px}
 .logo{display:flex;align-items:center;gap:10px}
-.logo__icon{
-  width:40px;height:40px;
-  background:var(--green);color:var(--green-contrast);
-  display:grid;place-items:center;
-  font-size:18px;font-weight:900;
-  border-radius:10px;
-  box-shadow:var(--glow);
+.logo__img{
+  width:44px;height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--border);
+  box-shadow:var(--shadow);
+  background:#fff;
+  flex-shrink:0;
 }
 .logo__text strong{display:block;font-size:17px;line-height:1;color:var(--text)}
 .logo__text small{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.18em;color:var(--muted);font-weight:700}
@@ -167,22 +168,25 @@ input,select{font:inherit}
   border-radius:999px;padding:0 5px;
   font-family:'JetBrains Mono',monospace;
 }
-.theme-toggle{
-  width:42px;height:42px;
-  background:var(--toggle-bg);border:1px solid var(--toggle-border);
-  border-radius:50%;display:grid;place-items:center;
-  color:var(--text);transition:.3s var(--ease);
-  position:relative;overflow:hidden;
+/* Professional theme toggle — inspired by Vercel/Linear/GitHub: clean icon swap, no emoji */
+.theme-btn{
+  position:relative;
+  overflow:hidden;
+  /* inherits .icon-btn look, just add icon animation target */
 }
-.theme-toggle:hover{border-color:var(--green);transform:translateY(-1px)}
-.theme-toggle__icon{
-  position:absolute;transition:transform .4s var(--ease),opacity .3s var(--ease);
-  font-size:16px;line-height:1;
+.theme-icon{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  transition:opacity .35s var(--ease),transform .45s var(--ease);
+  color:var(--text);
 }
-.theme-toggle__icon--sun{opacity:1;transform:rotate(0) scale(1)}
-.theme-toggle__icon--moon{opacity:0;transform:rotate(-90deg) scale(.6)}
-html[data-theme="dark"] .theme-toggle__icon--sun{opacity:0;transform:rotate(90deg) scale(.6)}
-html[data-theme="dark"] .theme-toggle__icon--moon{opacity:1;transform:rotate(0) scale(1)}
+.theme-icon--light{opacity:1;transform:rotate(0deg) scale(1)}
+.theme-icon--dark{opacity:0;transform:rotate(-90deg) scale(.55)}
+html[data-theme="dark"] .theme-icon--light{opacity:0;transform:rotate(90deg) scale(.55)}
+html[data-theme="dark"] .theme-icon--dark{opacity:1;transform:rotate(0deg) scale(1)}
+.theme-btn:hover .theme-icon{color:var(--green)}
 
 .burger{display:none;flex-direction:column;gap:5px;background:transparent;border:0;padding:6px}
 .burger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:.2s}

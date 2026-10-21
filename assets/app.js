@@ -601,21 +601,27 @@ updateCartUI();
 
 // ========== Scroll header shadow ==========
 window.addEventListener('scroll', ()=>{
-  $('#header').style.boxShadow = window.scrollY>10? '0 4px 20px rgba(0,0,0,.4)' : 'none';
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  $('#header').style.boxShadow = window.scrollY>10? (isDark ? '0 4px 20px rgba(0,0,0,.4)' : '0 4px 20px rgba(0,0,0,.08)') : 'none';
 });
 
-// ========== Theme — white default, dark lighter than pure black ==========
+// ========== Theme — white default, dark = #1C1C1E (professional, not pure black) ==========
 const themeToggle = document.getElementById('themeToggle');
 function applyTheme(theme){
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('ap_theme', theme);
+  document.documentElement.style.colorScheme = theme;
+  localStorage.setItem('ap_theme_v2', theme);
+  // update meta theme-color for mobile browser chrome
+  const metaLight = document.querySelector('meta[name=\"theme-color\"][media*=\"light\"]');
+  const metaDark = document.querySelector('meta[name=\"theme-color\"][media*=\"dark\"]');
+  if(theme==='dark' && metaDark) metaDark.content = '#1c1c1e';
 }
 if(themeToggle){
   themeToggle.addEventListener('click', ()=>{
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
     applyTheme(next);
-    toast(next==='dark' ? 'حالت تیره فعال شد 🌙' : 'حالت روشن فعال شد ☀️', next==='dark' ? '' : 'success');
+    toast(next==='dark' ? 'حالت تیره فعال شد' : 'حالت روشن فعال شد', next==='dark' ? '' : 'success');
   });
 }
 
