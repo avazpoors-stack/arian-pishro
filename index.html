@@ -7,13 +7,19 @@
 <meta name="description" content="آریان پیشرو — فروشگاه تخصصی سیستم گیمینگ، لپ‌تاپ، قطعات و لوازم جانبی. اسمبل حرفه‌ای، گارانتی معتبر، ارسال سراسری.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="assets/images/logo-64.jpg">
+<link rel="apple-touch-icon" href="assets/images/logo-256.jpg">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="assets/style.css">
 <script>
-// Early theme — white default, dark = lighter than pure black
+// Early theme — force white default for this update (v2 key)
 (function(){
-  const saved = localStorage.getItem('ap_theme');
+  const saved = localStorage.getItem('ap_theme_v2');
   const theme = saved || 'light';
   document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.style.colorScheme = theme;
 })();
 </script>
 </head>
@@ -36,8 +42,8 @@
 <!-- Header -->
 <header class="header" id="header">
   <div class="container header__inner">
-    <a class="logo" href="#" aria-label="آریان پیشرو">
-      <span class="logo__icon">◆</span>
+    <a class="logo" href="#" aria-label="آریان پیشرو — صفحه اصلی">
+      <img class="logo__img" src="assets/images/logo-128.jpg" alt="لوگوی آریان پیشرو" width="44" height="44" loading="eager" decoding="async">
       <span class="logo__text">
         <strong>آریان پیشرو</strong>
         <small>ARIAN PISHRO</small>
@@ -57,9 +63,9 @@
         <input id="searchInput" type="search" placeholder="جستجو: RTX 5080، لپ‌تاپ ایسوس..." autocomplete="off">
         <kbd>⌘ K</kbd>
       </label>
-      <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
-        <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
-        <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+      <button class="icon-btn theme-btn" id="themeToggle" aria-label="تغییر تم" title="تغییر تم (روشن / تیره)">
+        <svg class="theme-icon theme-icon--light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M19.07 4.93l-1.41 1.41M6.34 17.66l-1.41 1.41"/></svg>
+        <svg class="theme-icon theme-icon--dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
       </button>
       <button class="icon-btn" id="cartBtn" aria-label="سبد خرید">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-13z"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/><path d="M6 6L5 2H2"/></svg>
@@ -343,7 +349,7 @@
     <div class="footer__grid">
       <div>
         <div class="logo">
-          <span class="logo__icon">◆</span>
+          <img class="logo__img" src="assets/images/logo-64.jpg" alt="آریان پیشرو" width="40" height="40" loading="lazy">
           <span class="logo__text"><strong>آریان پیشرو</strong><small>ARIAN PISHRO</small></span>
         </div>
         <p class="footer__desc">فروشگاه تخصصی سخت‌افزار و سیستم‌های گیمینگ. از ۱۴۰۱ کنار گیمرهای ایرانی — با اسمبل حرفه‌ای و خدمات پس از فروش واقعی.</p>
