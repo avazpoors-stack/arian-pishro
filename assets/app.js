@@ -50,6 +50,16 @@ const featuredSystems = [
   },
 ];
 
+// ========== Persian labels for spec keys ==========
+const SPEC_LABELS = {
+  gpu:'کارت گرافیک', cpu:'پردازنده', ram:'حافظه رم', ssd:'حافظه SSD',
+  vram:'حافظه گرافیکی', bus:'رابط حافظه', power:'توان مصرفی',
+  cores:'هسته', threads:'رشته پردازشی', freq:'فرکانس', cache:'کش',
+  switch:'سوییچ', layout:'چیدمان', light:'نورپردازی', conn:'اتصال',
+  dpi:'دقت سنسور', weight:'وزن', battery:'باتری'
+};
+const specLabel = k => SPEC_LABELS[k] || k;
+
 const products = [
   {id:'p1',code:'AP-GPU-5080',brand:'ASUS ROG',cat:'gpu',name:'کارت گرافیک ایسوس ROG RTX 5080 OC 16GB',img:'assets/images/gpu.jpg',specs:{gpu:'RTX 5080',vram:'16GB GDDR7',bus:'256-bit',power:'360W'},price:52900000,oldPrice:58900000,inStock:true,stars:5},
   {id:'p2',code:'AP-LAP-001',brand:'ASUS',cat:'laptop',name:'لپ‌تاپ گیمینگ ROG Strix G16 — i7 14700HX + RTX 4070',img:'assets/images/laptop.jpg',specs:{cpu:'i7-14700HX',gpu:'RTX 4070 8GB',ram:'16GB',ssd:'1TB NVMe'},price:74900000,oldPrice:79900000,inStock:true,stars:5},
@@ -203,7 +213,7 @@ function renderRail(){
           <span><b>رم</b><strong>${s.specs.ram}</strong></span>
           <span><b>حافظه</b><strong>${s.specs.ssd}</strong></span>
         </div>
-        <div class="trust-line"><i>🛡️</i> ۱۲ ماه گارانتی • ۷ روز مهلت تست • اسمبل رایگان</div>
+        <div class="trust-line"><i><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></i> ۱۲ ماه گارانتی • ۷ روز مهلت تست • اسمبل رایگان</div>
         <div class="rail__price">
           <b>${fmt(s.price)} <small style="font-size:11px">تومان</small></b>
           ${s.oldPrice?`<s>${fmt(s.oldPrice)}</s>`:''}
@@ -265,9 +275,9 @@ function renderProducts(){
         <span class="product__brand">${p.brand}</span>
         <h3 class="product__name">${p.name}</h3>
         <div class="product__specs">
-          ${Object.entries(p.specs).map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('')}
+          ${Object.entries(p.specs).map(([k,v])=>`<div><span>${specLabel(k)}</span><b>${v}</b></div>`).join('')}
         </div>
-        <div class="trust-line"><i>✓</i> ۱۲ ماه گارانتی • ۷ روز مهلت تست</div>
+        <div class="trust-line"><i><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></i> ۱۲ ماه گارانتی • ۷ روز مهلت تست</div>
         <div class="product__price">
           <b>${fmt(p.price)} <small>تومان</small></b>
           ${p.oldPrice?`<s>${fmt(p.oldPrice)}</s>`:''}
@@ -286,7 +296,7 @@ function renderProducts(){
   const hint=$('#loadMoreHint');
   if(list.length>visibleCount){
     moreBtn.style.display='inline-flex';
-    moreBtn.textContent=`نمایش ${Math.min(3,list.length-visibleCount)} محصول دیگر ↓`;
+    moreBtn.textContent=`نمایش ${Math.min(3,list.length-visibleCount)} محصول دیگر`;
     hint.textContent=`${fmt(visibleCount)} از ${fmt(list.length)} نمایش داده شده — برای جلوگیری از Choice Overload`;
   } else {
     moreBtn.style.display='none';
@@ -381,7 +391,7 @@ function openModal(id){
       <div class="modal__info">
         <span class="eyebrow">${brand}</span>
         <h2>${name}</h2>
-        <div class="modal__code">کد کالا: ${code} • ⭐ ${p.stars||5}.0 • موجودی: ${p.inStock===false?'<span style="color:#ff6b6b">ناموجود</span>':'<span style="color:var(--green)">موجود</span>'}</div>
+        <div class="modal__code">کد کالا: ${code} • <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;color:#f59e0b"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.7 6.1 20.8l1.2-6.6L2.5 9.5l6.6-.9z"/></svg> ${p.stars||5}.0 • موجودی: ${p.inStock===false?'<span style="color:#ff6b6b">ناموجود</span>':'<span style="color:var(--green)">موجود</span>'}</div>
         <div class="features">
           <div><b>ارسال فردا</b><span>سفارش تا ۱۵ امروز</span></div>
           <div><b>گارانتی ۱۲ ماهه</b><span>تعویض بی‌قید</span></div>
@@ -389,8 +399,8 @@ function openModal(id){
           <div><b>اسمبل رایگان</b><span>تست استرس کامل</span></div>
         </div>
         <div class="shipping">
-          <div><b>🚚 پست پیشتاز</b><span>فردا • رایگان بالای ۵م</span></div>
-          <div><b>📦 تیپاکس</b><span>فردا • پرداخت مقصد</span></div>
+          <div><b><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><path d="M3 7h10v9H3z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg> پست پیشتاز</b><span>فردا • رایگان بالای ۵م</span></div>
+          <div><b><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> تیپاکس</b><span>فردا • پرداخت مقصد</span></div>
         </div>
         <div style="display:flex;align-items:baseline;gap:10px;margin:12px 0">
           <b style="font-size:20px;color:var(--green)">${fmt(price)} <small>تومان</small></b>
@@ -414,13 +424,13 @@ function openModal(id){
     <div class="tab-panel" id="tab-specs" style="display:none">
       <table class="spec-table">
         <tr><td>کد کالا</td><td>${code}</td></tr>
-        ${Object.entries(specs).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}
+        ${Object.entries(specs).map(([k,v])=>`<tr><td>${specLabel(k)}</td><td>${v}</td></tr>`).join('')}
         <tr><td>گارانتی</td><td>۱۲ ماه آریان پیشرو + گارانتی اصلی</td></tr>
         <tr><td>ارسال</td><td>پست پیشتاز / تیپاکس — فردایی</td></tr>
       </table>
     </div>
     <div class="tab-panel" id="tab-reviews" style="display:none">
-      <p>⭐⭐⭐⭐⭐ ۴.۸ از ۵ — بر اساس ۴۳ دیدگاه تأییدشده</p>
+      <p><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;color:#f59e0b"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.7 6.1 20.8l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;color:#f59e0b"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.7 6.1 20.8l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;color:#f59e0b"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.7 6.1 20.8l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;color:#f59e0b"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.7 6.1 20.8l1.2-6.6L2.5 9.5l6.6-.9z"/></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true" style="vertical-align:-1px;color:#f59e0b"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6L12 17.7 6.1 20.8l1.2-6.6L2.5 9.5l6.6-.9z"/></svg> ۴.۸ از ۵ — بر اساس ۴۳ دیدگاه تأییدشده</p>
       <div style="background:var(--card);border:1px solid var(--border);padding:12px;border-radius:10px;margin:8px 0"><b>امیر • تأییدشده</b><p>عالی بود، دقیقاً همون چیزی که سفارش دادم با بسته‌بندی امن رسید.</p></div>
       <div style="background:var(--card);border:1px solid var(--border);padding:12px;border-radius:10px"><b>نگار • تأییدشده</b><p>پشتیبانی تا نصب کامل همراهم بود. پیشنهاد می‌کنم.</p></div>
     </div>
@@ -473,8 +483,7 @@ function addToCart(id){
   if(ex) ex.qty++;
   else cart.push({id:p.id,name:p.name,img:p.img,price:p.price,qty:1});
   saveCart();
-  openDrawer();
-  toast('به سبد اضافه شد ✓','success');
+  openDrawer();     /* the drawer itself is the confirmation — no duplicate toast */
 }
 function updateCartUI(){
   const count=cart.reduce((a,c)=>a+c.qty,0);
